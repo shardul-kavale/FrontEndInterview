@@ -6,7 +6,6 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
@@ -25,7 +24,6 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
