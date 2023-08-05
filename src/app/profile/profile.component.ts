@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from '../models/profileData.interface';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -11,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   profile:Profile={name:'',email:'',bio:''}
 
+  constructor(private router: Router){}
   ngOnInit() {
 
     axios.get<Profile>('https://mocki.io/v1/611a3036-4420-48a5-b8da-9b461853cdd2')
@@ -20,6 +22,10 @@ export class ProfileComponent implements OnInit {
       .catch((error) => {
         console.error('Error fetching profile data:', error);
       });
+  }
+
+  goBack(){
+   this.router.navigate(['/']);
   }
 
 }
