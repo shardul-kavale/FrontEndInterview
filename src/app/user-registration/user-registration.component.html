@@ -32,7 +32,7 @@
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>Bio</mat-label>
         <textarea matInput placeholder="Bio" formControlName="bio" required></textarea>
-        <mat-error *ngIf="registrationForm.get('bio')!.hasError('minlength')">Bio should be atleast 20 characters</mat-error>
+        <mat-error *ngIf="registrationForm.get('bio')!.hasError('minlength')">Bio should be atleast 10 characters</mat-error>
       </mat-form-field>
 
       <div class="button-container">

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { UserRegistration } from '../models/registration.interface';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-registration',
@@ -18,12 +19,12 @@ export class UserRegistrationComponent {
     bio: ''
   };
   registrationError: string = '';
-  constructor(private formBuilder: FormBuilder,private router: Router) {
+  constructor(private formBuilder: FormBuilder,private router: Router, private snackBar: MatSnackBar) {
     this.registrationForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,Validators.minLength(8)]],
-      bio: ['', [Validators.required,Validators.minLength(20)]]
+      bio: ['', [Validators.required,Validators.minLength(10)]]
     });
   }
 
@@ -38,6 +39,12 @@ export class UserRegistrationComponent {
         if (response.data.success) {
           console.log('Registration successful!');
           this.router.navigate(['/profile']);
+
+          this.snackBar.open('Registration Successful!', 'Close', {
+            duration: 5000, 
+            horizontalPosition: 'center', 
+            verticalPosition: 'top' 
+          });
         } else {      
           this.registrationError = 'Registration failed. Please try again later.';
         }
