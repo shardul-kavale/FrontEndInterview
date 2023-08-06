@@ -1,15 +1,20 @@
 <div class="container">
   <mat-card class="card">
     <h2 class="title">Sign Up</h2>
-    <form class="form">
+    <div class="error-message" *ngIf="registrationError">
+      <mat-error>{{ registrationError }}</mat-error>
+    </div>
+    <form class="form" [formGroup] ="registrationForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>Name</mat-label>
-        <input matInput placeholder="Name" name="name" required />
+        <input matInput placeholder="Name" formControlName="name" required/>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" name="email" required />
+        <input matInput placeholder="Email" formControlName="email" required />
+        <mat-error *ngIf="registrationForm.get('email')!.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="registrationForm.get('email')!.hasError('email')">Invalid email format</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field">
@@ -18,14 +23,16 @@
           matInput
           type="password"
           placeholder="Password"
-          name="password"
+          formControlName="password"
           required
         />
+        <mat-error *ngIf="registrationForm.get('password')!.hasError('minlength')">Password should be atleast 8 characters</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="input-field">
         <mat-label>Bio</mat-label>
-        <textarea matInput placeholder="Bio" name="bio" required></textarea>
+        <textarea matInput placeholder="Bio" formControlName="bio" required></textarea>
+        <mat-error *ngIf="registrationForm.get('bio')!.hasError('minlength')">Bio should be atleast 20 characters</mat-error>
       </mat-form-field>
 
       <div class="button-container">
@@ -34,6 +41,7 @@
           color="primary"
           type="submit"
           class="submit-btn"
+          [disabled]="registrationForm.invalid"
         >
           Register
         </button>

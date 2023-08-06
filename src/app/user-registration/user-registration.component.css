@@ -49,3 +49,8 @@
     background-color: #ff7043; 
   }
   
+  .mat-error {
+    color: red; 
+    font-size: 14px; 
+    margin-top: 8px;
+  }
