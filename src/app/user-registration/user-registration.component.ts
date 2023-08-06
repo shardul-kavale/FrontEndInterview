@@ -4,6 +4,7 @@ import { UserRegistration } from '../models/registration.interface';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -19,7 +20,7 @@ export class UserRegistrationComponent {
     bio: ''
   };
   registrationError: string = '';
-  constructor(private formBuilder: FormBuilder,private router: Router, private snackBar: MatSnackBar) {
+  constructor(private formBuilder: FormBuilder,private router: Router, private snackBar: MatSnackBar, private authService: AuthService) {
     this.registrationForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -45,6 +46,7 @@ export class UserRegistrationComponent {
             horizontalPosition: 'center', 
             verticalPosition: 'top' 
           });
+          this.authService.setUserRegistered(true);
         } else {      
           this.registrationError = 'Registration failed. Please try again later.';
         }
