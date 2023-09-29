@@ -10,12 +10,12 @@ import axios from 'axios';
 })
 export class ProfileComponent implements OnInit {
 
-  profile:Profile={name:'',email:'',bio:''}
+  profile:Profile={name:'',email:'',bio:'', img: ''}
 
   constructor(private router: Router){}
   ngOnInit() {
 
-    axios.get<Profile>('https://mocki.io/v1/611a3036-4420-48a5-b8da-9b461853cdd2')
+    axios.get<Profile>('https://mocki.io/v1/2fd68b03-cb64-4f55-9db9-497819cdc548')
       .then((response) => {
         this.profile = response.data;
       })
