@@ -8,7 +8,7 @@ Shardul Kavale - Associate Application Developer
 Halifax CIC
 
 # Usage Intructions
-**Live link:** Project can be accessed at https://calm-genie-8bdb93.netlify.app/
+**Live link:** Project can be accessed at https://6516f422ae9449029928340f--playful-parfait-76144c.netlify.app/
 
 **LocalHost:** 
 1. `git clone https://github.com/shardul-kavale/FrontEndInterview.git`
